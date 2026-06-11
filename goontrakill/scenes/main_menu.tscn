@@ -1,3 +1,53 @@
 [gd_scene format=3 uid="uid://b72yci06l7kgq"]
 
+[ext_resource type="FontFile" uid="uid://dlk11cklk855q" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="1_ekxnf"]
+[ext_resource type="PackedScene" uid="uid://cxr6bp7kgbko3" path="res://scenes/rotate.tscn" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://d3t0qlcfdv5ec" path="res://scripts/main_menu.gd" id="1_wu84c"]
+[ext_resource type="Script" uid="uid://b1b4dls14u8k8" path="res://scripts/rotate.gd" id="3_bqqt6"]
+
+[sub_resource type="Environment" id="Environment_wu84c"]
+
 [node name="Main Menu" type="Node3D" unique_id=988938206]
+script = ExtResource("1_wu84c")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1856024109]
+transform = Transform3D(0.9867738, 0.1621033, 0, -0.1621033, 0.9867738, 0, 0, 0, 1, -36.665535, 42.776093, 165.85902)
+light_color = Color(0.22745098, 1, 0.8784314, 1)
+light_energy = 16.0
+light_indirect_energy = 4.05
+light_volumetric_fog_energy = 16.0
+omni_range = 318.872
+omni_attenuation = 0.604
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1203570687]
+transform = Transform3D(1.8259265, 0, 0, 0, 1, 0, 0, 0, 1, -44.27453, 47.897835, 101.07539)
+
+[node name="StartLabel" type="Label3D" parent="." unique_id=111383195]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.42316, 60.251907, -7.383789)
+pixel_size = 1.2013
+modulate = Color(1, 0.16078432, 0.047058824, 1)
+text = "Press Enter"
+font = ExtResource("1_ekxnf")
+font_size = 8
+outline_size = 5
+line_spacing = -0.08
+
+[node name="NameLabel" type="Label3D" parent="." unique_id=1131098511]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.028526, 106.131195, -7.383789)
+pixel_size = 1.2013
+modulate = Color(1, 0.16078432, 0.047058824, 1)
+text = "GOONTRAKILL"
+font = ExtResource("1_ekxnf")
+font_size = 26
+outline_size = 5
+line_spacing = -0.08
+
+[node name="Rotate" parent="." unique_id=1969491402 instance=ExtResource("1_l6cm7")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+script = ExtResource("3_bqqt6")
+speed = -1.0
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1058784961]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1265298687]
+environment = SubResource("Environment_wu84c")
