@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dj6tg0k485vqa"
+path="res://.godot/imported/main menu music placeholder.mp3-42509e1440515f67b519283df5c05664.mp3str"
+
+[deps]
+
+source_file="res://assets/main menu music placeholder.mp3"
+dest_files=["res://.godot/imported/main menu music placeholder.mp3-42509e1440515f67b519283df5c05664.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

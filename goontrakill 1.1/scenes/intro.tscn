@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://kcx6v0lmou00"]
+
+[ext_resource type="VideoStream" uid="uid://cw4f3mhllx1dk" path="res://assets/intro_film_eng.ogv" id="1_ioskq"]
+[ext_resource type="Script" uid="uid://cry7menityx0p" path="res://scripts/intro.gd" id="1_yjqpq"]
+
+[node name="Intro" type="Control" unique_id=1294823038]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(0.68, 0.68)
+script = ExtResource("1_yjqpq")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=1167059460]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+stream = ExtResource("1_ioskq")
+volume_db = 3.0
+autoplay = true
+
+[node name="Timer" type="Timer" parent="." unique_id=587437451]
+wait_time = 9.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

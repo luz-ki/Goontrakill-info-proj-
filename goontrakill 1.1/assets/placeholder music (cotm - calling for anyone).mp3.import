@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b3j225vhhtdbd"
+path="res://.godot/imported/placeholder music (cotm - calling for anyone).mp3-7eeb5dbda4463c050188c1967fa58416.mp3str"
+
+[deps]
+
+source_file="res://assets/placeholder music (cotm - calling for anyone).mp3"
+dest_files=["res://.godot/imported/placeholder music (cotm - calling for anyone).mp3-7eeb5dbda4463c050188c1967fa58416.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
