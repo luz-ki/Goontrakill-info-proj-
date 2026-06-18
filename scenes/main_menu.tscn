@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://b72yci06l7kgq"]
+
+[ext_resource type="FontFile" uid="uid://dlk11cklk855q" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="1_ekxnf"]
+[ext_resource type="PackedScene" uid="uid://cxr6bp7kgbko3" path="res://scenes/rotate.tscn" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://d3t0qlcfdv5ec" path="res://scripts/main_menu.gd" id="1_wu84c"]
+[ext_resource type="Script" uid="uid://b1b4dls14u8k8" path="res://scripts/rotate.gd" id="3_bqqt6"]
+[ext_resource type="AudioStream" uid="uid://dj6tg0k485vqa" path="res://assets/audio/music/main menu music placeholder.mp3" id="5_8ln24"]
+[ext_resource type="Texture2D" uid="uid://bn3tbdvtv445a" path="res://assets/1_black_pixel.png" id="6_rtw2f"]
+
+[sub_resource type="Environment" id="Environment_wu84c"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8ln24"]
+
+[node name="Main Menu" type="Node3D" unique_id=988938206]
+script = ExtResource("1_wu84c")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1856024109]
+transform = Transform3D(0.9867738, 0.1621033, 0, -0.1621033, 0.9867738, 0, 0, 0, 1, 29.606247, 60.8658, 184.42317)
+light_color = Color(0.8117647, 0.9137255, 1, 1)
+light_energy = 16.0
+light_indirect_energy = 5.343
+light_volumetric_fog_energy = 16.0
+light_size = 0.72
+shadow_enabled = true
+shadow_blur = 10.0
+omni_range = 295.71
+omni_attenuation = 0.604
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1203570687]
+transform = Transform3D(1.8259265, 0, 0, 0, 1, 0, 0, 0, 1, -44.27453, 47.897835, 101.07539)
+
+[node name="StartLabel" type="Label3D" parent="." unique_id=111383195]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.42316, 60.251907, -7.383789)
+pixel_size = 1.2013
+texture_filter = 2
+modulate = Color(1, 0.16078432, 0.047058824, 1)
+text = "Press Enter"
+font = ExtResource("1_ekxnf")
+font_size = 8
+outline_size = 5
+line_spacing = -0.08
+
+[node name="NameLabel" type="Label3D" parent="." unique_id=1131098511]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.028526, 106.131195, -7.383789)
+top_level = true
+pixel_size = 1.2013
+shaded = true
+texture_filter = 2
+modulate = Color(1, 0.16078432, 0.047058824, 1)
+text = "GOONTRAKILL"
+font = ExtResource("1_ekxnf")
+font_size = 26
+outline_size = 5
+line_spacing = -0.08
+
+[node name="Orb" parent="." unique_id=1969491402 instance=ExtResource("1_l6cm7")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+script = ExtResource("3_bqqt6")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1265298687]
+environment = SubResource("Environment_wu84c")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1896781684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.4585, 116.379364, 111.58)
+stream = ExtResource("5_8ln24")
+volume_db = 28.35
+unit_size = 32.06
+autoplay = true
+max_distance = 1000.0
+parameters/looping = true
+
+[node name="Background" type="MeshInstance3D" parent="." unique_id=2015195215]
+transform = Transform3D(454.76486, 0, 0, 0, 429.5688, 0, 0, 0, 6.2049294, -24.10794, 38.578293, -63.82125)
+mesh = SubResource("BoxMesh_8ln24")
+
+[node name="black(noshadow)" type="Sprite3D" parent="Background" unique_id=759437761]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 10, 0, 0, 0.7847996)
+visible = false
+texture = ExtResource("6_rtw2f")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=93566034]
+
+[node name="Button" type="Button" parent="SubViewport" unique_id=7868029]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "button1"

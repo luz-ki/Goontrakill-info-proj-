@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://drf0176aokfua"]
+
+[ext_resource type="Script" uid="uid://fui86o7jo7js" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://0av8br22iucq" path="res://assets/sprites/player_placeholder2.png" id="2_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://bt31honxlj1tr" path="res://assets/audio/clean_handgun_short.mp3" id="4_dqkch"]
+[ext_resource type="PackedScene" uid="uid://b28eoqo5hwpgh" path="res://scenes/user_interface.tscn" id="4_tuyoq"]
+[ext_resource type="AudioStream" uid="uid://bofecailuwnqx" path="res://assets/audio/hurt_funny.mp3" id="5_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://ddjj7g07pliwo" path="res://assets/sprites/gun_placeholder.png" id="6_tuyoq"]
+[ext_resource type="AudioStream" uid="uid://bs4chqv2m6ak5" path="res://assets/audio/confetti_screams.mp3" id="7_fjrip"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
+radius = 13.337501
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qlg0r"]
+radius = 274.41028
+
+[node name="player" type="CharacterBody2D" unique_id=1969448186]
+script = ExtResource("1_g2els")
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=340681140]
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_g2els")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1439505085]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("2_qhqgy")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1004756829]
+zoom = Vector2(0.5, 0.5)
+drag_horizontal_offset = 0.1
+drag_vertical_offset = 0.1
+
+[node name="UserInterface" parent="Camera2D" unique_id=378868843 instance=ExtResource("4_tuyoq")]
+offset_left = -1088.0
+offset_top = -620.0
+offset_right = -1088.0
+offset_bottom = -620.0
+
+[node name="Timer" type="Timer" parent="." unique_id=1747756127]
+one_shot = true
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="." unique_id=711319462]
+stream = ExtResource("4_dqkch")
+volume_db = -3.0
+pitch_scale = 1.5
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="." unique_id=896475218]
+stream = ExtResource("5_qlg0r")
+volume_db = 1.0
+
+[node name="AggroHitbox" type="Area2D" parent="." unique_id=789219932]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroHitbox" unique_id=703169217]
+shape = SubResource("CircleShape2D_qlg0r")
+
+[node name="gun" type="Node2D" parent="." unique_id=554097370]
+scale = Vector2(1.41, 1.41)
+
+[node name="gunHole" type="Node2D" parent="gun" unique_id=1442477319]
+position = Vector2(87.94326, -1.4184397)
+
+[node name="gunSprite" type="Sprite2D" parent="gun" unique_id=1863694279]
+texture_filter = 1
+position = Vector2(72, 6.6666665)
+texture = ExtResource("6_tuyoq")
+
+[node name="AudioListener2D" type="AudioStreamPlayer2D" parent="." unique_id=457982848]
+stream = ExtResource("7_fjrip")
+volume_db = 20.0
+
+[node name="gamewinTimer" type="Timer" parent="AudioListener2D" unique_id=1745476949]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="AudioListener2D/gamewinTimer" to="." method="_on_gamewin_timer_timeout"]

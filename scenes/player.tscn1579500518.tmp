@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://drf0176aokfua"]
+
+[ext_resource type="Script" uid="uid://fui86o7jo7js" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://0av8br22iucq" path="res://assets/player_placeholder2.png" id="2_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://b55qsgbjylqoq" path="res://scenes/bullet.tscn" id="3_qhqgy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
+radius = 13.152946
+
+[node name="player" type="CharacterBody2D" unique_id=1969448186]
+script = ExtResource("1_g2els")
+speed = 500.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=340681140]
+shape = SubResource("CircleShape2D_g2els")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1439505085]
+texture_filter = 1
+texture = ExtResource("2_qhqgy")
+
+[node name="Node" type="Node" parent="." unique_id=2139711999]
+
+[node name="Bullet" parent="." unique_id=637566251 instance=ExtResource("3_qhqgy")]
